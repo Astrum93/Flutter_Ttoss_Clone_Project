@@ -11,6 +11,21 @@ final bankAccountToss =
     BankAccount(bankTtoss, 500000000);
 final bankAccountKaKao =
     BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+final bankAccountKaKao1 =
+BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+final bankAccountKaKao2 =
+BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+final bankAccountKaKao3 =
+BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+final bankAccountKaKao4 =
+BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+final bankAccountKaKao5 =
+BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+final bankAccountKaKao6 =
+BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+final bankAccountKaKao7 =
+BankAccount(bankKaKao, 70000000000, accounTypeName: '입출금통장');
+
 
 // main(){
 //   print(bankAccounts[0].accounTypeName);
@@ -36,6 +51,14 @@ final bankAccounts = [
   bankAccountShinhan3,
   bankAccountToss,
   bankAccountKaKao,
+  bankAccountKaKao1,
+  bankAccountKaKao2,
+  bankAccountKaKao3,
+  bankAccountKaKao4,
+  bankAccountKaKao5,
+  bankAccountKaKao6,
+  bankAccountKaKao7,
+
 ];
 
 //Map
