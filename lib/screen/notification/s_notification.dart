@@ -24,9 +24,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) => NotificationItemWidget(
-                  notification: notificationDummies[index], onTap: () {
-                    NotificationDialog([notificationDummies[0], notificationDummies[1]]).show();
-              },),
+                notification: notificationDummies[index],
+                onTap: () {
+                  NotificationDialog(
+                      [notificationDummies[0], notificationDummies[1]]).show();
+                },
+              ),
               childCount: notificationDummies.length,
             ),
           ),
