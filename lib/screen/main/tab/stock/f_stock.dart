@@ -23,6 +23,7 @@ class _StockFragmentState extends State<StockFragment>
     return CustomScrollView(
       slivers: [
         SliverAppBar(
+          backgroundColor: context.appColors.roundedLayoutBackground,
           pinned: true,
           actions: [
             ImageButton(
@@ -64,50 +65,56 @@ class _StockFragmentState extends State<StockFragment>
     );
   }
 
-  Widget get title => Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          '토스증권'.text.size(24).bold.make(),
-          width20,
-          'S&P 500'
-              .text
-              .size(13)
-              .bold
-              .color(context.appColors.lessImportant)
-              .make(),
-          width10,
-          3919.29
-              .toComma()
-              .toString()
-              .text
-              .size(13)
-              .bold
-              .color(context.appColors.plus)
-              .make()
-        ],
-      ).pOnly(left: 20);
+  Widget get title => Container(
+    color: context.appColors.roundedLayoutBackground,
+    child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            '토스증권'.text.size(24).bold.make(),
+            width20,
+            'S&P 500'
+                .text
+                .size(13)
+                .bold
+                .color(context.appColors.lessImportant)
+                .make(),
+            width10,
+            3919.29
+                .toComma()
+                .toString()
+                .text
+                .size(13)
+                .bold
+                .color(context.appColors.plus)
+                .make()
+          ],
+        ).pOnly(left: 20),
+  );
 
-  Widget get tabBar => Column(
-        children: [
-          TabBar(
-            onTap: (index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
-            labelStyle:
-                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            labelPadding: const EdgeInsets.symmetric(vertical: 20),
-            indicatorColor: Colors.white,
-            controller: tabController,
-            tabs: [
-              '내 주식'.text.make(),
-              '오늘의 발견'.text.make(),
-            ],
-          ),
-          const Line()
-        ],
-      );
+  Widget get tabBar => Container(
+    color: context.appColors.roundedLayoutBackground,
+    child: Column(
+          children: [
+            TabBar(
+              onTap: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+              labelStyle:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              labelPadding: const EdgeInsets.symmetric(vertical: 20),
+              indicatorColor: Colors.white,
+              controller: tabController,
+              tabs: [
+                '내 주식'.text.make(),
+                '오늘의 발견'.text.make(),
+              ],
+            ),
+            const Line()
+          ],
+        ),
+  );
 
   Widget get myAccount => Placeholder();
 
