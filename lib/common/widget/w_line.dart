@@ -14,12 +14,14 @@ class Line extends StatelessWidget {
   final EdgeInsets? margin;
   final double height;
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
       color: color ?? context.appColors.divider,
       height: height,
+
     );
   }
 }
