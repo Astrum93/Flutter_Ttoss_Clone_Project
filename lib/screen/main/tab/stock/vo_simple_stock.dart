@@ -1,3 +1,4 @@
+import 'package:fast_app_base/screen/opensource/vo_package.dart';
 class SimpleStock {
   final String name;
 
@@ -11,4 +12,6 @@ class SimpleStock {
   String toString() {
     return name;
   }
+
+
 }

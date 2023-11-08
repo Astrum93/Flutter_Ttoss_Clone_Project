@@ -31,12 +31,22 @@ class LocalJson {
   }
 }
 
+// T _tryConverting<T>(dynamic json) {
+//
+//
+//   switch (T) {
+//     case SimpleStock:
+//     default:
+//       return SimpleStock.fromJson(json) as T;
+//   }
+// }
+
 T _tryConverting<T>(dynamic json) {
 
 
   switch (T) {
-    case SimpleStock:
+    case Package:
     default:
-      return SimpleStock.fromJson(json) as T;
+      return Package.fromJson(json) as T;
   }
 }
