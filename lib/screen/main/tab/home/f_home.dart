@@ -9,6 +9,9 @@ import 'package:fast_app_base/screen/main/tab/home/bank_accounts_dummy.dart';
 import 'package:fast_app_base/screen/main/tab/home/w_bank_account.dart';
 import 'package:fast_app_base/screen/main/tab/home/w_ttoss_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:live_background/live_background.dart';
+import 'package:live_background/widget/live_background_widget.dart';
 
 import '../../../../common/widget/w_big_button.dart';
 import '../../../dialog/d_color_bottom.dart';
@@ -25,6 +28,11 @@ class HomeFragment extends StatelessWidget {
       color: Colors.black,
       child: Stack(
         children: [
+          const LiveBackgroundWidget(
+palette: Palette(colors: [Colors.grey, Colors.white ]),
+            velocityX: 1,
+            particleMaxSize: 20,
+          ),
           RefreshIndicator(
             edgeOffset: TtossAppBar.appBarheight,
             onRefresh: () async {
@@ -34,6 +42,7 @@ class HomeFragment extends StatelessWidget {
               padding: const EdgeInsets.only(top: TtossAppBar.appBarheight,bottom: MainScreenState.bottomnavigatorHeight),
               child: Column(
                 children: [
+
                   height10,
                   BigButton(
                     "토스뱅크",
@@ -53,7 +62,7 @@ class HomeFragment extends StatelessWidget {
                     ),
                   )
                 ],
-              ).pSymmetric(h: 20),
+              ).pSymmetric(h: 20).animate().slideY(duration: 3000.ms).fadeIn(),
             ),
           ),
          const TtossAppBar(),
