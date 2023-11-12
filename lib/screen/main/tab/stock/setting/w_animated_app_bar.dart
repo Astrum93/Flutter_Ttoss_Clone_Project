@@ -23,7 +23,7 @@ class _AnimatedAppBarState extends State<AnimatedAppBar>  {
   @override
   void initState() {
 
-    widget.controller.addListener(() {
+    widget.animationController.addListener(() {
       setState(() {
       });
     });
