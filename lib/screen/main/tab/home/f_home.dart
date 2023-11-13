@@ -7,6 +7,7 @@ import 'package:fast_app_base/screen/dialog/d_message.dart';
 import 'package:fast_app_base/screen/main/s_main.dart';
 import 'package:fast_app_base/screen/main/tab/home/bank_accounts_dummy.dart';
 import 'package:fast_app_base/screen/main/tab/home/w_bank_account.dart';
+import 'package:fast_app_base/screen/main/tab/home/w_rive_like_button.dart';
 import 'package:fast_app_base/screen/main/tab/home/w_ttoss_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -17,10 +18,17 @@ import '../../../../common/widget/w_big_button.dart';
 import '../../../dialog/d_color_bottom.dart';
 import '../../../dialog/d_confirm.dart';
 
-class HomeFragment extends StatelessWidget {
+class HomeFragment extends StatefulWidget {
   const HomeFragment({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<HomeFragment> createState() => _HomeFragmentState();
+}
+
+class _HomeFragmentState extends State<HomeFragment> {
+  bool isLike = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,7 @@ class HomeFragment extends StatelessWidget {
       child: Stack(
         children: [
           const LiveBackgroundWidget(
-palette: Palette(colors: [Colors.grey, Colors.white ]),
+            palette: Palette(colors: [Colors.grey, Colors.white]),
             velocityX: 1,
             particleMaxSize: 20,
           ),
@@ -39,10 +47,20 @@ palette: Palette(colors: [Colors.grey, Colors.white ]),
               await sleepAsync(500.ms);
             },
             child: SingleChildScrollView(
-              padding: const EdgeInsets.only(top: TtossAppBar.appBarheight,bottom: MainScreenState.bottomnavigatorHeight),
+              padding: const EdgeInsets.only(
+                  top: TtossAppBar.appBarheight,
+                  bottom: MainScreenState.bottomnavigatorHeight),
               child: Column(
                 children: [
-
+                  SizedBox(
+                    height: 250,
+                    width: 250,
+                    child: RiveLikeButton(isLike, onTapLike: (isLike) {
+                      setState(() {
+                        this.isLike = isLike;
+                      });
+                    }),
+                  ),
                   height10,
                   BigButton(
                     "토스뱅크",
@@ -57,62 +75,23 @@ palette: Palette(colors: [Colors.grey, Colors.white ]),
                       children: [
                         "자산".text.bold.white.make(),
                         height5,
-                        ...bankAccounts.map((e) => BankAccountWidget(e)).toList()
+                        ...bankAccounts
+                            .map((e) => BankAccountWidget(e))
+                            .toList()
                       ],
                     ),
                   )
                 ],
-              ).pSymmetric(h: 20).animate().slideY(duration: 3000.ms).fadeIn(),
+              ).pSymmetric(h: 20),
             ),
           ),
-         const TtossAppBar(),
+          const TtossAppBar(),
         ],
       ),
     );
   }
-  // return Container(
-  //   color: context.appColors.seedColor.getMaterialColorValues[100],
-  //   child: Column(
-  //     crossAxisAlignment: CrossAxisAlignment.center,
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     children: [
-  //       Row(
-  //         children: [
-  //           IconButton(
-  //             onPressed: () => openDrawer(context),
-  //             icon: const Icon(Icons.menu),
-  //           )
-  //         ],
-  //       ),
-  //       const EmptyExpanded(),
-  //       RoundButton(
-  //         text: 'Snackbar 보이기',
-  //         onTap: () => showSnackbar(context),
-  //         theme: RoundButtonTheme.blue,
-  //       ),
-  //       const Height(20),
-  //       RoundButton(
-  //         text: 'Confirm 다이얼로그',
-  //         onTap: () => showConfirmDialog(context),
-  //         theme: RoundButtonTheme.whiteWithBlueBorder,
-  //       ),
-  //       const Height(20),
-  //       RoundButton(
-  //         text: 'Message 다이얼로그',
-  //         onTap: showMessageDialog,
-  //         theme: RoundButtonTheme.whiteWithBlueBorder,
-  //       ),
-  //       const Height(20),
-  //       RoundButton(
-  //         text: '메뉴 보기',
-  //         onTap: () => openDrawer(context),
-  //         theme: RoundButtonTheme.blink,
-  //       ),
-  //       const EmptyExpanded()
-  //     ],
-  //   ),
-  // );
 
+  // return Container(
   void showSnackbar(BuildContext context) {
     context.showSnackbar('snackbar 입니다.',
         extraButton: Tap(
